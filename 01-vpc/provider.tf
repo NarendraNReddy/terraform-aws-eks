@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "narendra-shop-aws-eks"
-    key    = "expense-dev-vpc"
+    bucket = "daws78s-nnr6"
+    key    = "eks-cluster-vpc"
     region = "us-east-1"
-    dynamodb_table = "narendra-shop-locking"
+    dynamodb_table = "daws78s-nnr6"
   }
 }
 
