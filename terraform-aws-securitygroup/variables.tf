@@ -1,48 +1,45 @@
 variable "project_name" {
-  type=string
+  type = string
 }
 
 variable "environment" {
-    type=string 
-    default = "dev"
+  type = string
 }
 
 variable "sg_name" {
-    type=string
+  type = string
 }
 
 variable "sg_description" {
-  type=string 
-
+  type = string
 }
 
 variable "vpc_id" {
-  type=string
+  type = string
 }
 
-
 variable "common_tags" {
-  type=map
+  type = map
 }
 
 variable "sg_tags" {
-  type = map 
+  type = map
   default = {}
 }
 
 variable "outbound_rules" {
-    type = list  
-    default = [
-        {
-          port=0
-          protocol="-1"
-          allow_cidr=["0.0.0.0/0"]
-        }
-    ]
-  
+  type = list
+  default = [
+    {
+        from_port = 0
+        to_port = 0
+        protocol = "-1" # all protocols
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
 }
 
 variable "ingress_rules" {
-  type=list
+  type = list
   default = []
 }

@@ -39,7 +39,7 @@ module "node" {
 }
 
 module "bastion" {
-  source = "../../terraform-aws-securitygroup"
+  source = "../terraform-aws-securitygroup"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for Bastion Instances"
@@ -49,7 +49,7 @@ module "bastion" {
 }
 
 module "vpn" {
-  source = "../../terraform-aws-securitygroup"
+  source = "../terraform-aws-securitygroup"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for VPN Instances"
