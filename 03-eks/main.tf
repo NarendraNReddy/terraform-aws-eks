@@ -10,8 +10,8 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
   #cluster_service_ipv4_cidr = var.cluster_service_ipv4_cidr
-  cluster_name    = "${var.project_name}-${var.environment}"
-  cluster_version = "1.30"
+  cluster_name    = "${var.project_name}-${var.environment}"#expense-dev
+  cluster_version = "1.29"
 
   cluster_endpoint_public_access = true
 
@@ -41,19 +41,7 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    # blue = {
-    #   min_size      = 2
-    #   max_size      = 10
-    #   desired_size  = 2
-    #   capacity_type = "SPOT"
-    #   iam_role_additional_policies = {
-    #     AmazonEBSCSIDriverPolicy          = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-    #     AmazonElasticFileSystemFullAccess = "arn:aws:iam::aws:policy/AmazonElasticFileSystemFullAccess"
-    #   }
-    #   # EKS takes AWS Linux 2 as it's OS to the nodes
-    #   key_name = aws_key_pair.eks.key_name
-    # }
-    green = {
+    blue = {
       min_size      = 2
       max_size      = 10
       desired_size  = 2
@@ -65,6 +53,18 @@ module "eks" {
       # EKS takes AWS Linux 2 as it's OS to the nodes
       key_name = aws_key_pair.eks.key_name
     }
+    # green = {
+    #   min_size      = 2
+    #   max_size      = 10
+    #   desired_size  = 2
+    #   capacity_type = "SPOT"
+    #   iam_role_additional_policies = {
+    #     AmazonEBSCSIDriverPolicy          = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+    #     AmazonElasticFileSystemFullAccess = "arn:aws:iam::aws:policy/AmazonElasticFileSystemFullAccess"
+    #   }
+    #   # EKS takes AWS Linux 2 as it's OS to the nodes
+    #   key_name = aws_key_pair.eks.key_name
+    # }
   }
 
   tags = var.common_tags
